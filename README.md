@@ -8,3 +8,5 @@ mvn clean package
 ```
 docker build -t demo:0.0.1 .
 ```
+### Jmeter压测结果
+压测配置：jmeter/demo.jmx
