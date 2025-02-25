@@ -57,7 +57,7 @@ if (!$distributionUrl) {
 }
 
 switch -wildcard -casesensitive ( $($distributionUrl -replace '^.*/','') ) {
-  "maven-mvnd-*" {
+  "maven-mvnd-*" {mvn clean package
     $USE_MVND = $true
     $distributionUrl = $distributionUrl -replace '-bin\.[^.]*$',"-windows-amd64.zip"
     $MVN_CMD = "mvnd.cmd"
