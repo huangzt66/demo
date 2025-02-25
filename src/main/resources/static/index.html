@@ -71,10 +71,10 @@
 <body>
     <h2>添加交易</h2>
     <form id="addTransactionForm">
+        <label for="accountId">账号ID:</label>
+        <input type="text" id="accountId" required>
         <label for="amount">交易金额:</label>
         <input type="number" id="amount" required>
-        <label for="timestamp">交易时间:</label>
-        <input type="datetime-local" id="timestamp" required>
         <label for="type">交易类型:</label>
         <select id="type">
             <option value="收入">收入</option>
@@ -88,8 +88,8 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>账号ID</th>
                 <th>交易金额</th>
-                <th>交易时间</th>
                 <th>交易类型</th>
                 <th>操作</th>
             </tr>
@@ -102,10 +102,10 @@
     <form id="updateTransactionForm">
         <label for="updateId">交易ID:</label>
         <input type="text" id="updateId" required>
+        <label for="updateAccountId">账号ID:</label>
+        <input type="text" id="updateAccountId" required>
         <label for="updateAmount">交易金额:</label>
         <input type="number" id="updateAmount" required>
-        <label for="updateTimestamp">交易时间:</label>
-        <input type="datetime-local" id="updateTimestamp" required>
         <label for="updateType">交易类型:</label>
         <select id="updateType">
             <option value="收入">收入</option>
@@ -139,8 +139,8 @@
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${transaction.id}</td>
+                        <td>${transaction.accountId}</td>
                         <td>${transaction.amount}</td>
-                        <td>${transaction.timestamp}</td>
                         <td>${transaction.type}</td>
                         <td>
                             <button onclick="editTransaction('${transaction.id}')">编辑</button>
@@ -157,12 +157,12 @@
         // 添加交易
         addTransactionForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            const accountId = document.getElementById('accountId').value;
             const amount = document.getElementById('amount').value;
-            const timestamp = document.getElementById('timestamp').value;
             const type = document.getElementById('type').value;
             const newTransaction = {
+                accountId: accountId,
                 amount: parseFloat(amount),
-                timestamp: timestamp,
                 type: type
             };
             try {
@@ -186,8 +186,8 @@
                 const response = await fetch(`http://localhost:8080/transactions/${id}`);
                 const transaction = await response.json();
                 document.getElementById('updateId').value = transaction.id;
+                document.getElementById('updateAccountId').value = transaction.accountId;
                 document.getElementById('updateAmount').value = transaction.amount;
-                document.getElementById('updateTimestamp').value = transaction.timestamp;
                 document.getElementById('updateType').value = transaction.type;
             } catch (error) {
                 console.error('获取交易详情失败:', error);
@@ -198,13 +198,13 @@
         updateTransactionForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const id = document.getElementById('updateId').value;
+            const accountId = document.getElementById('updateAccountId').value;
             const amount = document.getElementById('updateAmount').value;
-            const timestamp = document.getElementById('updateTimestamp').value;
             const type = document.getElementById('updateType').value;
             const updatedTransaction = {
                 id: id,
+                accountId: accountId,
                 amount: parseFloat(amount),
-                timestamp: timestamp,
                 type: type
             };
             try {
