@@ -18,9 +18,9 @@ public class Transaction {
     public String getId() {
         return id; 
     }
-    // public void setId(String id) {
-    //     this.id = id; 
-    // }
+    public void setId(String id) {
+        this.id = id; 
+    }
     public double getAmount() {
         return amount; 
     }
