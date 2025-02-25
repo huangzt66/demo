@@ -14,7 +14,7 @@ public class Transaction {
         this.timestamp = timestamp;
         this.type = type;
     }
-    // 构造函数、getter和setter方法
+
     public String getId() {
         return id; 
     }

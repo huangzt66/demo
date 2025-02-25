@@ -3,25 +3,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import com.example.demo.entity.Transaction;
+
 import org.springframework.stereotype.Repository;
+
+import com.example.demo.entity.Transaction;
 
 @Repository
 public class TransactionRepository {
     private static Map<String, Transaction> transactionMap = new HashMap<>();
 
     /**
-     * 保存一个事务到事务映射中。
-     * 如果事务已经存在于映射中，它将被更新。
-     * 如果事务不存在，它将被添加到映射中。
+     * 保存一个Transaction到Transaction MAP中。
+     * 如果Transaction已经存在于映射中，它将被更新。
+     * 如果Transaction不存在，它将被添加到映射中。
      *
-     * @param transaction 要保存的事务对象。
-     * @return 保存后的事务对象。
+     * @param transaction 要保存的Transaction对象。
+     * @return 保存后的Transaction对象。
      */
     public Transaction save(Transaction transaction) {
-        // 将事务对象存入transactionMap，键为事务的ID，值为事务对象本身
+        // 将Transaction对象存入transactionMap，键为Transaction的ID，值为Transaction对象本身
         transactionMap.put(transaction.getId(), transaction);
-        // 返回保存后的事务对象
+        // 返回保存后的Transaction对象
         return transaction;
     }
 
