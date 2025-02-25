@@ -1,4 +1,6 @@
 package com.example.demo.service;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -6,8 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Transaction;
 import com.example.demo.repository.TransactionRepository;
-
-import java.util.List;
 
 @Service
 public class TransactionService {
@@ -70,7 +70,7 @@ public class TransactionService {
         }
         Transaction existingTransaction = transactionRepository.findById(id);
         if (existingTransaction != null) {
-            transaction.setId(id);
+            // transaction.setId(id);
             return transactionRepository.save(transaction);
         }
         return null;

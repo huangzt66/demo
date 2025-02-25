@@ -4,14 +4,23 @@ public class Transaction {
     private double amount;
     private String timestamp;
     private String type;
-
+    public Transaction() {
+        // 无参构造函数,自动生成id
+        this.id = java.util.UUID.randomUUID().toString();
+    }
+    public Transaction(String id, double amount, String timestamp, String type) {
+        this.id = id;
+        this.amount = amount;
+        this.timestamp = timestamp;
+        this.type = type;
+    }
     // 构造函数、getter和setter方法
     public String getId() {
         return id; 
     }
-    public void setId(String id) {
-        this.id = id; 
-    }
+    // public void setId(String id) {
+    //     this.id = id; 
+    // }
     public double getAmount() {
         return amount; 
     }
