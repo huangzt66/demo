@@ -76,7 +76,7 @@ public class TransactionService {
     @CacheEvict(value = "transactions", allEntries = true)
     public Transaction updateTransaction(String id, Transaction transaction) {
         // 打印请求参数
-        logger.info("updateTransaction 请求参数: id={}, transaction={}", id, transaction);
+        // logger.info("updateTransaction 请求参数: id={}, transaction={}", id, transaction);
         // 简单的金额验证
         if (transaction.getAmount() <= 0) {
             throw new IllegalArgumentException("交易金额必须大于 0");
